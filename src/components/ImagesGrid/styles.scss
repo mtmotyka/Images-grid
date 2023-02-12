@@ -1,0 +1,47 @@
+.images-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 0;
+
+  &__column {
+    flex: 0 0 25%;
+    max-width: 25%;
+    padding: 0 15px;
+    margin-bottom: 30px;
+
+    @media (max-width: 1365px) {
+      flex: 0 0 33.33%;
+      max-width: 33.33%;
+    }
+
+    @media (max-width: 991px) {
+      flex: 0 0 50%;
+      max-width: 50%;
+    }
+
+    @media (max-width: 767px) {
+      flex: 0 0 100%;
+      max-width: 100%;
+    }
+  }
+
+  &__counter {
+    background-color: #fff;
+    border: 2px solid #eee;
+    padding: 15px;
+    position: fixed;
+    right: 30px;
+    bottom: 30px;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 15px;
+  }
+
+  &__reset-btn {
+    padding: 5px 10px;
+  }
+}

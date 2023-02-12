@@ -1,26 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from "react";
+import ImagesGrid from "./components/ImagesGrid";
+import { defaultImagesNumber } from "./constants";
+import { fetchImages } from "./services/api";
+import "./styles/index.scss";
+import { SingleImage } from "./types/images.types";
 
-function App() {
+const App: React.FC = () => {
+  const [images, setImages] = useState<SingleImage[]>([]);
+
+  useEffect(() => {
+    fetchImages(defaultImagesNumber).then((data) => setImages(data));
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <section className="images-section">
+      <div className="container">
+        <ImagesGrid images={images} />
+      </div>
+    </section>
   );
-}
+};
 
 export default App;
